@@ -1,0 +1,23 @@
+{
+  "name": "create-react-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "material-ui": "next",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "prettier": "1.11.1",
+    "standard": "11.0.1"
+  }
+}
