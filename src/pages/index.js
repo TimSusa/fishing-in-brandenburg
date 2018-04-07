@@ -9,7 +9,7 @@ import TableEnhaced from '../components/EnhancedTable/'
 import { getNamesAndAreas } from './../angel-radar'
 
 class Index extends React.Component {
-  startVal = '10'
+  startVal = '1'
   state = {
     limitAreaValue: this.startVal,
     data: getNamesAndAreas(this.startVal)

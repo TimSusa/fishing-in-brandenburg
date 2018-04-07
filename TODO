@@ -1,5 +1,4 @@
 - get rid of pagination
-- implement onDelete
 - input field for searching after name
 - set up with heroku
 - put JSON into a database (mongodb)

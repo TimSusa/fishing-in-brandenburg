@@ -4,8 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import Table, {
     TableBody,
     TableCell,
-    TableFooter,
-    TablePagination,
     TableRow,
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
@@ -22,9 +20,7 @@ class EnhancedTable extends React.Component {
             order: 'asc',
             orderBy: 'area',
             selected: [],
-            data: [],
-            page: 0,
-            rowsPerPage: 25
+            data: []
         };
     }
 
@@ -41,8 +37,7 @@ class EnhancedTable extends React.Component {
 
     render() {
         const { classes, data } = this.props;
-        const { order, orderBy, selected, rowsPerPage, page } = this.state;
-        const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+        const { order, orderBy, selected } = this.state;
 
         return (
             <Paper className={classes.root}>
@@ -63,7 +58,7 @@ class EnhancedTable extends React.Component {
                             rowCount={data.length}
                         />
                         <TableBody>
-                            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((n, i) => {
+                            {data.map((n, i) => {
                                 const isSelected = this.isSelected(i);
                                 return (
                                     <TableRow
@@ -89,30 +84,7 @@ class EnhancedTable extends React.Component {
                                     </TableRow>
                                 );
                             })}
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 49 * emptyRows }}>
-                                    <TableCell colSpan={6} />
-                                </TableRow>
-                            )}
                         </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                    colSpan={6}
-                                    count={data.length}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    backIconButtonProps={{
-                                        'aria-label': 'Previous Page'
-                                    }}
-                                    nextIconButtonProps={{
-                                        'aria-label': 'Next Page'
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                />
-                            </TableRow>
-                        </TableFooter>
                     </Table>
                 </div>
             </Paper>
@@ -124,9 +96,11 @@ class EnhancedTable extends React.Component {
     }
 
     handleOpenGoogleClick = (stuff) => {
-        const coods = this.getSelectedItems().map( (item) => {
-            return item.coods
-        } )
+        const coods = this.getSelectedItems()
+        .map( (item) => {
+                return item.coods
+            } )
+        .filter ((ob) => !!ob)
         window.location.href = `https://www.google.com/maps/dir/${coods.join('/')}`
     } 
 
@@ -178,10 +152,6 @@ class EnhancedTable extends React.Component {
 
     handleChangePage = (event, page) => {
         this.setState({ page });
-    };
-
-    handleChangeRowsPerPage = (event) => {
-        this.setState({ rowsPerPage: event.target.value });
     };
 
     isSelected = (index) => this.state.selected.indexOf(index) !== -1;
