@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 # Fishing in Brandenburg
+=======
+# Fishing in Brandenburg App
+>>>>>>> Stashed changes
 
 ## How to use
 
