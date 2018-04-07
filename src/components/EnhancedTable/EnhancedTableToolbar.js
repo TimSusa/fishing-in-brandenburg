@@ -8,7 +8,6 @@ import IconButton from 'material-ui/IconButton'
 import Tooltip from 'material-ui/Tooltip'
 import DeleteIcon from 'material-ui-icons/Delete'
 import DirectionsIcon from 'material-ui-icons/Directions'
-import FilterListIcon from 'material-ui-icons/FilterList'
 import { lighten } from 'material-ui/styles/colorManipulator'
 
 let EnhancedTableToolbar = (props) => {
@@ -58,13 +57,7 @@ let EnhancedTableToolbar = (props) => {
               </IconButton>
             </Tooltip>
           </div>
-        ) : (
-          <Tooltip title='Filter list'>
-            <IconButton aria-label='Filter list'>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+        ) : null}
       </div>
     </Toolbar>
   )
