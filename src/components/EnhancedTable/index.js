@@ -46,7 +46,11 @@ class EnhancedTable extends React.Component {
 
         return (
             <Paper className={classes.root}>
-                <EnhancedTableToolbar numSelected={selected.length} selectedItems={this.getSelectedItems()} />
+                <EnhancedTableToolbar 
+                numSelected={selected.length} 
+                selectedItems={this.getSelectedItems()} 
+                handleOpenGoogleClick={this.handleOpenGoogleClick}
+                />
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table}>
                         <EnhancedTableHead
@@ -113,6 +117,13 @@ class EnhancedTable extends React.Component {
             </Paper>
         );
     }
+
+    handleOpenGoogleClick = (stuff) => {
+        const coods = this.getSelectedItems().map( (item) => {
+            return item.coods
+        } )
+        window.location.href = `https://www.google.com/maps/dir/${coods.join('/')}`
+    } 
 
     getSelectedItems = () => {
         console.log('state ', this.state);

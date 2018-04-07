@@ -11,6 +11,68 @@ import DirectionsIcon from 'material-ui-icons/Directions'
 import FilterListIcon from 'material-ui-icons/FilterList'
 import { lighten } from 'material-ui/styles/colorManipulator'
 
+let EnhancedTableToolbar = (props) => {
+  const { numSelected, selectedItems, classes, handleOpenGoogleClick } = props
+  return (
+    <Toolbar
+      className={classNames(classes.root, {
+        [classes.highlight]: numSelected > 0
+      })}
+    >
+      <div className={classes.title}>
+        {numSelected > 0 ? (
+          <div>
+            <Typography color='inherit' variant='subheading'>
+              {numSelected} Gewässer für Route ausgewählt:
+            </Typography>
+            {selectedItems.map((item, i) => {
+              return (
+                <Typography key={`${i}-selected`} color='inherit'>
+                  {item.name}
+                </Typography>
+              )
+            })}
+          </div>
+        ) : (
+          <Typography variant='title' />
+        )}
+      </div>
+      <div className={classes.spacer} />
+      <div className={classes.actions}>
+        {numSelected > 0 ? (
+          <div>
+            <Tooltip title='Auf Google Maps öffnen'>
+              <IconButton
+                aria-label='Open Route on Google Maps'
+                onClick={handleOpenGoogleClick}>
+                <DirectionsIcon />
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title='Auswahl verwerfen'>
+              <IconButton aria-label='Delete'>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+        ) : (
+          <Tooltip title='Filter list'>
+            <IconButton aria-label='Filter list'>
+              <FilterListIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+      </div>
+    </Toolbar>
+  )
+}
+
+EnhancedTableToolbar.propTypes = {
+  classes: PropTypes.object.isRequired,
+  numSelected: PropTypes.number.isRequired,
+  selectedItems: PropTypes.array
+}
+
 const toolbarStyles = (theme) => ({
   root: {
     paddingRight: theme.spacing.unit
@@ -35,66 +97,5 @@ const toolbarStyles = (theme) => ({
     flex: '0 0 auto'
   }
 })
-
-let EnhancedTableToolbar = (props) => {
-  const { numSelected, selectedItems, classes } = props
-  console.log('toolbar', props)
-  return (
-    <Toolbar
-      className={classNames(classes.root, {
-        [classes.highlight]: numSelected > 0
-      })}
-    >
-      <div className={classes.title}>
-        {numSelected > 0 ? (
-          <div>
-            <Typography color='inherit' variant='subheading'>
-              {numSelected} Gewässer für Route ausgewählt:
-            </Typography>
-            {selectedItems.map((item, i) => {
-              return (
-                <Typography key={i} color='inherit'>
-                  {item.name}
-                </Typography>
-              )
-            })}
-          </div>
-        ) : (
-          <Typography variant='title' />
-        )}
-      </div>
-      <div className={classes.spacer} />
-      <div className={classes.actions}>
-        {numSelected > 0 ? (
-          <div>
-            <Tooltip title='Open Route on Google Maps'>
-              <IconButton aria-label='Open Route on Google Maps'>
-                <DirectionsIcon />
-              </IconButton>
-            </Tooltip>
-
-            <Tooltip title='Delete'>
-              <IconButton aria-label='Delete'>
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
-          </div>
-        ) : (
-          <Tooltip title='Filter list'>
-            <IconButton aria-label='Filter list'>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
-      </div>
-    </Toolbar>
-  )
-}
-
-EnhancedTableToolbar.propTypes = {
-  classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
-  selectedItems: PropTypes.array
-}
 
 export default EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar)
