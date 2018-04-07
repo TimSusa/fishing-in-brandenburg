@@ -50,6 +50,7 @@ class EnhancedTable extends React.Component {
                 numSelected={selected.length} 
                 selectedItems={this.getSelectedItems()} 
                 handleOpenGoogleClick={this.handleOpenGoogleClick}
+                handleDeleteSelection={this.handleDeleteSelection}
                 />
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table}>
@@ -118,6 +119,10 @@ class EnhancedTable extends React.Component {
         );
     }
 
+    handleDeleteSelection = () => {
+        this.setState({selected: []})
+    }
+
     handleOpenGoogleClick = (stuff) => {
         const coods = this.getSelectedItems().map( (item) => {
             return item.coods
@@ -126,7 +131,6 @@ class EnhancedTable extends React.Component {
     } 
 
     getSelectedItems = () => {
-        console.log('state ', this.state);
         const selectedItems = this.state.selected.map((item) => {
             return this.state.data[item];
         });

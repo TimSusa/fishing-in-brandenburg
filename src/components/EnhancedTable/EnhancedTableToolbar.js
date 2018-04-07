@@ -12,7 +12,7 @@ import FilterListIcon from 'material-ui-icons/FilterList'
 import { lighten } from 'material-ui/styles/colorManipulator'
 
 let EnhancedTableToolbar = (props) => {
-  const { numSelected, selectedItems, classes, handleOpenGoogleClick } = props
+  const { numSelected, selectedItems, classes, handleOpenGoogleClick, handleDeleteSelection } = props
   return (
     <Toolbar
       className={classNames(classes.root, {
@@ -50,7 +50,10 @@ let EnhancedTableToolbar = (props) => {
             </Tooltip>
 
             <Tooltip title='Auswahl verwerfen'>
-              <IconButton aria-label='Delete'>
+              <IconButton
+                aria-label='Delete'
+                onClick={handleDeleteSelection}
+              >
                 <DeleteIcon />
               </IconButton>
             </Tooltip>

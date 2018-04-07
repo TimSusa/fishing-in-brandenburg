@@ -1,6 +1,5 @@
 - get rid of pagination
-- implement onDelete, open route on google
+- implement onDelete
 - input field for searching after name
-- set up on github
 - set up with heroku
 - put JSON into a database (mongodb)
