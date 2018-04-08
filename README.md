@@ -29,3 +29,6 @@ via Heroku, see: https://devcenter.heroku.com/articles/getting-started-with-node
 git push heroku master
 heroku ps:scale web=1
 heroku open
+
+## Thx to..
+https://github.com/mars/heroku-cra-node for this amazing package, which I use here as starting point to have it deploayble to heroku.

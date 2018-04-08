@@ -22,7 +22,22 @@ class Index extends React.Component {
           DAV Angelgewässer Brandenburg
         </Typography>
         <Typography variant="subheading" gutterBottom>
-          Sortierung nach Fläche (ha)
+          Sortierung nach Name:
+        </Typography>
+        <Input
+        placeholder="Name hier eingeben"
+          defaultValue={''}
+          inputProps={{
+            'aria-label': 'Name hier eingeben',
+          }}
+          onChange={this.handleChange}
+          name='inputName'
+        />
+        <br/>
+        <br/>
+        
+        <Typography variant="subheading" gutterBottom>
+          Sortierung nach Fläche (ha):
         </Typography>
         <Input
           defaultValue={this.state.limitAreaValue}
@@ -43,8 +58,19 @@ class Index extends React.Component {
   handleChange = (e) => {
     if (e.target.name === 'inputArea') {
       var data = getNamesAndAreas(e.target.value) 
-      this.setState({data})
+      this.setState({data, limitAreaValue: e.target.value})
+      
     }
+    if (e.target.name === 'inputName') {
+      const data = getNamesAndAreas(this.state.limitAreaValue)
+        .filter( item => {
+          return item.name.includes(e.target.value)
+        })
+      this.setState({
+        data
+      })
+    }
+    
   }
 }
 

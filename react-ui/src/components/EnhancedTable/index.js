@@ -25,14 +25,11 @@ class EnhancedTable extends React.Component {
     }
 
     componentWillMount() {
-        this.setState({
-            data: this.props.data.map((item, index) => {
-                return {
-                    ...item,
-                    index
-                };
-            })
-        });
+        this.refreshStateData(this.props.data)
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.refreshStateData(nextProps.data)
     }
 
     render() {
@@ -67,7 +64,7 @@ class EnhancedTable extends React.Component {
                                         role="checkbox"
                                         aria-checked={isSelected}
                                         tabIndex={-1}
-                                        key={`${i}`}
+                                        key={`${i}-selected`}
                                         selected={isSelected}
                                     >
                                         <TableCell padding="checkbox">
@@ -89,6 +86,17 @@ class EnhancedTable extends React.Component {
                 </div>
             </Paper>
         );
+    }
+
+    refreshStateData = (input) => {
+        this.setState({
+            data: input.map((item, index) => {
+                return {
+                    ...item,
+                    index
+                };
+            })
+        });
     }
 
     handleDeleteSelection = () => {
@@ -148,10 +156,6 @@ class EnhancedTable extends React.Component {
         }
 
         this.setState({ selected: newSelected });
-    };
-
-    handleChangePage = (event, page) => {
-        this.setState({ page });
     };
 
     isSelected = (index) => this.state.selected.indexOf(index) !== -1;
