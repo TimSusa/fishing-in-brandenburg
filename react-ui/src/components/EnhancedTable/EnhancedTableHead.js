@@ -17,10 +17,6 @@ const columnData = [
 ];
 
 class EnhancedTableHead extends React.Component {
-    createSortHandler = (property) => (event) => {
-        this.props.onRequestSort(event, property);
-    };
-
     render() {
         const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
 
@@ -62,6 +58,10 @@ class EnhancedTableHead extends React.Component {
             </TableHead>
         );
     }
+    
+    createSortHandler = (property) => (event) => {
+        this.props.onRequestSort(event, property);
+    };
 }
 
 EnhancedTableHead.propTypes = {
