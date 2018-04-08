@@ -135,7 +135,6 @@ class EnhancedTable extends React.Component {
 	};
 
 	handleClick = (event, index) => {
-		event.preventDefault();
 		const currentSelectedObj = this.state.data[index];
 		let tmpArray = this.state.selected;
 
