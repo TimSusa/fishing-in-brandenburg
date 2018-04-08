@@ -92,8 +92,7 @@ class EnhancedTable extends React.Component {
 		this.setState({
 			data: input.map((item, index) => {
 				return {
-					...item,
-					index
+					...item
 				};
 			})
 		});
@@ -129,7 +128,7 @@ class EnhancedTable extends React.Component {
 	handleSelectAllClick = (event, checked) => {
 		event.preventDefault();
 		if (checked) {
-			this.setState({ selected: this.state.data.map((n) => n.index) });
+			this.setState({ selected: this.state.data.map((n) => n) });
 			return;
 		}
 		this.setState({ selected: [] });
@@ -138,11 +137,19 @@ class EnhancedTable extends React.Component {
 	handleClick = (event, index) => {
 		event.preventDefault();
 		const currentSelectedObj = this.state.data[index];
+		let tmpArray = this.state.selected;
 
-		if (this.state.selected && this.state.selected.includes(currentSelectedObj)) return;
+		if (tmpArray) {
+			if (this.state.selected.indexOf(currentSelectedObj) !== -1) {
+				const idx = tmpArray.indexOf(currentSelectedObj)
+                tmpArray.splice(idx, 1);
+			} else {
+				tmpArray = [ ...this.state.selected, currentSelectedObj ];
+			}
+		}
 
 		this.setState({
-			selected: [ ...this.state.selected, currentSelectedObj ]
+			selected: tmpArray
 		});
 	};
 
