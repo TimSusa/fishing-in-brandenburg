@@ -27,7 +27,7 @@ let EnhancedTableToolbar = (props) => {
             {selectedItems.map((item, i) => {
               return (
                 <Typography key={`${i}-selected`} color='inherit'>
-                  {item && item.name}
+                  {item && item.name.substring(0, 120)}
                 </Typography>
               )
             })}
