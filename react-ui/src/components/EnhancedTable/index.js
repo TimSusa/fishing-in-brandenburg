@@ -33,9 +33,9 @@ class EnhancedTable extends React.Component {
     }
 
     render() {
-        const { classes, data } = this.props;
+        const { classes } = this.props;
         const { order, orderBy, selected } = this.state;
-
+        const data = this.state.data
         return (
             <Paper className={classes.root}>
                 <EnhancedTableToolbar 
@@ -56,7 +56,7 @@ class EnhancedTable extends React.Component {
                         />
                         <TableBody>
                             {data.map((n, i) => {
-                                const isSelected = this.isSelected(i);
+                                const isSelected = this.isSelected(i, n);
                                 return (
                                     <TableRow
                                         hover
@@ -95,7 +95,8 @@ class EnhancedTable extends React.Component {
                     ...item,
                     index
                 };
-            })
+            }),
+            selected: this.state.selected
         });
     }
 
@@ -113,9 +114,7 @@ class EnhancedTable extends React.Component {
     } 
 
     getSelectedItems = () => {
-        const selectedItems = this.state.selected.map((item) => {
-            return this.state.data[item];
-        });
+        const selectedItems = this.state.selected
         return selectedItems;
     };
 
@@ -141,24 +140,21 @@ class EnhancedTable extends React.Component {
     };
 
     handleClick = (event, index) => {
-        const { selected } = this.state;
-        const selectedIndex = selected.indexOf(index);
-        let newSelected = [];
 
-        if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, index);
-        } else if (selectedIndex === 0) {
-            newSelected = newSelected.concat(selected.slice(1));
-        } else if (selectedIndex === selected.length - 1) {
-            newSelected = newSelected.concat(selected.slice(0, -1));
-        } else if (selectedIndex > 0) {
-            newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-        }
+        const currentSelectedObj = this.state.data[index]
 
-        this.setState({ selected: newSelected });
+        if (this.state.selected && this.state.selected.includes(currentSelectedObj)) return
+
+        this.setState({
+            selected: [...this.state.selected, currentSelectedObj]
+        })
     };
 
-    isSelected = (index) => this.state.selected.indexOf(index) !== -1;
+    isSelected = (i, input) => {
+        const tmp = this.state.selected && this.state.selected
+            .some( (obj) => (obj.name === input.name))
+        return tmp
+    }
 }
 
 EnhancedTable.propTypes = {
