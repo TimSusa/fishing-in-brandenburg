@@ -12,6 +12,7 @@ import { lighten } from 'material-ui/styles/colorManipulator'
 
 let EnhancedTableToolbar = (props) => {
   const { numSelected, selectedItems, classes, handleOpenGoogleClick, handleDeleteSelection } = props
+  console.log(selectedItems)
   return (
     <Toolbar
       className={classNames(classes.root, {

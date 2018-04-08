@@ -22,7 +22,7 @@ class Index extends React.Component {
           DAV Angelgewässer Brandenburg
         </Typography>
         <Typography variant="subheading" gutterBottom>
-          Sortierung nach Name:
+          Suche nach Name:
         </Typography>
         <Input
         placeholder="Name hier eingeben"
@@ -37,7 +37,7 @@ class Index extends React.Component {
         <br/>
         
         <Typography variant="subheading" gutterBottom>
-          Sortierung nach Fläche (ha):
+          Sortierung nach Fläche größer in ha:
         </Typography>
         <Input
           defaultValue={this.state.limitAreaValue}
@@ -48,7 +48,7 @@ class Index extends React.Component {
           name='inputArea'
         />
         <Typography variant="subheading" gutterBottom>
-          Gesamt: {this.state.data.length}
+          Gefundene Anzahl: {this.state.data.length}
         </Typography>
         <TableEnhaced data={this.state.data}/>
       </div>
