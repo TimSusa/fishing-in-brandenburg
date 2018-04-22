@@ -74,7 +74,6 @@ class Index extends React.Component {
 	}
 
 	onItemSelected = (markerPositions) => {
-		console.log('onItemSelected ', markerPositions)
 		this.setState({
 			markerPositions
 		})
@@ -82,14 +81,15 @@ class Index extends React.Component {
 	handleChange = (e) => {
 		if (e.target.name === 'inputArea') {
 			var data = getNamesAndAreas(e.target.value);
-			this.setState({ data, limitAreaValue: e.target.value });
+			this.setState({ data, limitAreaValue: e.target.value, markerPositions: data.map( ({coods}) => (coods)) });
 		}
 		if (e.target.name === 'inputName') {
 			const data = getNamesAndAreas(this.state.limitAreaValue).filter((item) => {
 				return item.name.includes(e.target.value);
 			});
 			this.setState({
-				data
+				data,
+				markerPositions: data.map( ({coods}) => (coods))
 			});
 		}
 	};
