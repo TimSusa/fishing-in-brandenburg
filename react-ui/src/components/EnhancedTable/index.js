@@ -137,11 +137,11 @@ class EnhancedTable extends React.Component {
 		let tmpArray = this.state.selected;
 
 		if (tmpArray) {
-			if (this.state.selected.indexOf(currentSelectedObj) !== -1) {
+			if (tmpArray.indexOf(currentSelectedObj) !== -1) {
 				const idx = tmpArray.indexOf(currentSelectedObj);
 				tmpArray.splice(idx, 1);
 			} else {
-				tmpArray = [ ...this.state.selected, currentSelectedObj ];
+				tmpArray = [ ...tmpArray, currentSelectedObj ];
 			}
 		}
 
