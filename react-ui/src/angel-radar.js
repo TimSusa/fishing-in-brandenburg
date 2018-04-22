@@ -1,14 +1,13 @@
-import {davAngeln} from './data/dav-angel'
+import { davAngeln } from './data/dav-angel'
 
 export function getNamesAndAreas (limit, isAsc = true) {
   const namesAndAreas = extractNamesAndAreas(davAngeln.positions)
   const areasWithNamesGreater = extractAreasWithGreaterThan(namesAndAreas, limit)
   return sortAfterAreas(areasWithNamesGreater, isAsc)
-};
+}
 
 function extractNamesAndAreas (positions) {
-  return positions
-    .map(extractNameAndArea)
+  return positions.map(extractNameAndArea)
 }
 
 // This function will get a position from array and
@@ -35,7 +34,9 @@ function extractAreasWithGreaterThan (namesAndAreas, threshold) {
 }
 
 function sortAfterAreas (areas, isAsc) {
-  var sorted = areas.sort(function (a, b) { return a.area - b.area })
+  let sorted = areas.sort(function (a, b) {
+    return a.area - b.area
+  })
   sorted = isAsc ? sorted.reverse() : sorted
   return sorted
 }

@@ -1,5 +1,5 @@
 export const davAngeln = {
-  'positions': [
+  positions: [
     [
       '10',
       '102',
@@ -5544,20 +5544,7 @@ export const davAngeln = {
       'P 05',
       'KAV Prenzlau e.V.'
     ],
-    [
-      '1428',
-      '102',
-      'Grünower See',
-      'Grünower See',
-      '23,43',
-      '',
-      '',
-      '',
-      '27',
-      '3',
-      'P 05',
-      'KAV Prenzlau e.V.'
-    ],
+    [ '1428', '102', 'Grünower See', 'Grünower See', '23,43', '', '', '', '27', '3', 'P 05', 'KAV Prenzlau e.V.' ],
     [
       '409',
       '101',
@@ -13580,34 +13567,8 @@ export const davAngeln = {
       'VP 06',
       'KAV Templin'
     ],
-    [
-      '1337',
-      '03',
-      'Zenssee',
-      'Zenssee',
-      '100',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
-    [
-      '1338',
-      '04',
-      'Fährsee',
-      'Fährsee',
-      '220',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
+    [ '1337', '03', 'Zenssee', 'Zenssee', '100', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
+    [ '1338', '04', 'Fährsee', 'Fährsee', '220', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
     [
       '1339',
       '05',
@@ -13615,83 +13576,18 @@ export const davAngeln = {
       'Lübbesee',
       '300',
       'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
-    [
-      '1340',
-      '06',
-      'Zaarsee',
-      'Zaarsee',
-      '18',
-      'Marke',
-      '',
+      '53.0963724,13.5592684',
       '',
       '72',
       '10',
       'VP 06',
       'KAV Templin'
     ],
-    [
-      '1341',
-      '07',
-      'Röddelinsee',
-      'Röddelinsee',
-      '190',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
-    [
-      '1342',
-      '08',
-      'Gleuensee',
-      'Gleuensee',
-      '35',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
-    [
-      '1343',
-      '09',
-      'Platkowsee',
-      'Platkowsee',
-      '70',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
-    [
-      '1344',
-      '10',
-      'Oberpfuhlsee',
-      'Oberpfuhlsee',
-      '65',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
+    [ '1340', '06', 'Zaarsee', 'Zaarsee', '18', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
+    [ '1341', '07', 'Röddelinsee', 'Röddelinsee', '190', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
+    [ '1342', '08', 'Gleuensee', 'Gleuensee', '35', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
+    [ '1343', '09', 'Platkowsee', 'Platkowsee', '70', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
+    [ '1344', '10', 'Oberpfuhlsee', 'Oberpfuhlsee', '65', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
     [
       '1345',
       '11',
@@ -13706,20 +13602,7 @@ export const davAngeln = {
       'VP 06',
       'KAV Templin'
     ],
-    [
-      '1346',
-      '12',
-      'Nesselpfuhlsee',
-      'Nesselpfuhlsee',
-      '17',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
+    [ '1346', '12', 'Nesselpfuhlsee', 'Nesselpfuhlsee', '17', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
     [
       '1347',
       '13',
@@ -13762,48 +13645,22 @@ export const davAngeln = {
       'VP 06',
       'KAV Templin'
     ],
-    [
-      '1350',
-      '16',
-      'Netzowsee',
-      'Netzowsee',
-      '115',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
+    [ '1350', '16', 'Netzowsee', 'Netzowsee', '115', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
     [
       '1351',
       '17',
-      'Lübbelowsee',
-      'Lübbelowsee',
+      'Lübelowsee',
+      'Lübelowsee',
       '300',
       'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
-    [
-      '1352',
-      '18',
-      'Bruchsee',
-      'Bruchsee',
-      '21',
-      'Marke',
-      '',
+      '53.0749484,13.6505863',
       '',
       '72',
       '10',
       'VP 06',
       'KAV Templin'
     ],
+    [ '1352', '18', 'Bruchsee', 'Bruchsee', '21', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
     [
       '1353',
       '19',
@@ -13818,20 +13675,7 @@ export const davAngeln = {
       'VP 06',
       'KAV Templin'
     ],
-    [
-      '1355',
-      '21',
-      'Libbesickesee',
-      'Libbesickesee',
-      '35',
-      'Marke',
-      '',
-      '',
-      '72',
-      '10',
-      'VP 06',
-      'KAV Templin'
-    ],
+    [ '1355', '21', 'Libbesickesee', 'Libbesickesee', '35', 'Marke', '', '', '72', '10', 'VP 06', 'KAV Templin' ],
     [
       '1356',
       '01',
@@ -14070,20 +13914,7 @@ export const davAngeln = {
       'VF 02',
       'Beeskow'
     ],
-    [
-      '1374',
-      '07',
-      'Glower See',
-      'Glower See',
-      '160',
-      'Marke/JAK',
-      '',
-      '',
-      '79',
-      '10',
-      'VF 02',
-      'Beeskow'
-    ],
+    [ '1374', '07', 'Glower See', 'Glower See', '160', 'Marke/JAK', '', '', '79', '10', 'VF 02', 'Beeskow' ],
     [
       '1375',
       '08',
@@ -14098,34 +13929,8 @@ export const davAngeln = {
       'VF 02',
       'Beeskow'
     ],
-    [
-      '1376',
-      '09',
-      'Oegelner See',
-      'Oegelner See',
-      '',
-      'Marke/JAK',
-      '',
-      '',
-      '79',
-      '10',
-      'VF 02',
-      'Beeskow'
-    ],
-    [
-      '1377',
-      '10',
-      'Wergensee',
-      'Wergensee',
-      '13',
-      'Marke/JAK',
-      '',
-      '',
-      '79',
-      '10',
-      'VF 02',
-      'Beeskow'
-    ],
+    [ '1376', '09', 'Oegelner See', 'Oegelner See', '', 'Marke/JAK', '', '', '79', '10', 'VF 02', 'Beeskow' ],
+    [ '1377', '10', 'Wergensee', 'Wergensee', '13', 'Marke/JAK', '', '', '79', '10', 'VF 02', 'Beeskow' ],
     [
       '1379',
       '006',
@@ -14196,20 +14001,7 @@ export const davAngeln = {
       'VF 05',
       'Bad Freienwalde'
     ],
-    [
-      '1385',
-      '05',
-      'Freigraben',
-      'Freigraben',
-      '',
-      'JAK',
-      '',
-      '',
-      '81',
-      '10',
-      'VF 05',
-      'Bad Freienwalde'
-    ],
+    [ '1385', '05', 'Freigraben', 'Freigraben', '', 'JAK', '', '', '81', '10', 'VF 05', 'Bad Freienwalde' ],
     [
       '1386',
       '06',
@@ -14252,20 +14044,7 @@ export const davAngeln = {
       'VF 05',
       'Bad Freienwalde'
     ],
-    [
-      '1389',
-      '01',
-      'Katja See',
-      'Katja See',
-      '75',
-      'JAK',
-      '',
-      '',
-      '82',
-      '10',
-      'VF 06',
-      'KAV Eisenhüttenstadt'
-    ],
+    [ '1389', '01', 'Katja See', 'Katja See', '75', 'JAK', '', '', '82', '10', 'VF 06', 'KAV Eisenhüttenstadt' ],
     [
       '1390',
       '05',
@@ -14588,20 +14367,7 @@ export const davAngeln = {
       'VC 09',
       'KAV Lübben'
     ],
-    [
-      '1413',
-      '02',
-      'Radduschsee',
-      'Radduschsee',
-      '',
-      'JAK',
-      '',
-      '',
-      '86',
-      '10',
-      'VC 09',
-      'KAV Lübben'
-    ],
+    [ '1413', '02', 'Radduschsee', 'Radduschsee', '', 'JAK', '', '', '86', '10', 'VC 09', 'KAV Lübben' ],
     [
       '1414',
       '03',
@@ -14630,20 +14396,7 @@ export const davAngeln = {
       'VC 09',
       'KAV Lübben'
     ],
-    [
-      '1417',
-      '01',
-      'Die Oder',
-      'Die Oder',
-      '',
-      'JAK',
-      '',
-      '',
-      '87',
-      '10',
-      'VF 00',
-      'Frankfurt / Oder'
-    ],
+    [ '1417', '01', 'Die Oder', 'Die Oder', '', 'JAK', '', '', '87', '10', 'VF 00', 'Frankfurt / Oder' ],
     [
       '1418',
       '02',

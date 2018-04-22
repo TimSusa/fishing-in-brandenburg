@@ -1,23 +1,25 @@
 {
-  "name": "react-ui",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "react-scripts": "^1.1.0"
-  },
-  "dependencies": {
-    "material-ui": "next",
-    "material-ui-icons": "^1.0.0-beta.36",
-    "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:5000"
+	"name": "react-ui",
+	"version": "0.1.0",
+	"private": true,
+	"devDependencies": {
+		"recompose": "^0.27.0",
+		"standard": "*"
+	},
+	"dependencies": {
+		"material-ui": "next",
+		"material-ui-icons": "^1.0.0-beta.36",
+		"prop-types": "latest",
+		"react": "latest",
+		"react-dom": "latest",
+		"react-google-maps": "^9.4.5",
+		"react-scripts": "latest"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"proxy": "http://localhost:5000"
 }

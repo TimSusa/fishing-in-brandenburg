@@ -90,11 +90,7 @@ class EnhancedTable extends React.Component {
 
 	refreshStateData = (input) => {
 		this.setState({
-			data: input.map((item, index) => {
-				return {
-					...item
-				};
-			})
+			data: input
 		});
 	};
 
@@ -105,11 +101,13 @@ class EnhancedTable extends React.Component {
 	handleOpenGoogleClick = (evt) => {
 		evt.preventDefault();
 		const coods = this.state.selected
-			.map((item) => {
-				return item.coods;
+			.map(({ coods }) => {
+				return coods;
 			})
 			.filter((ob) => !!ob);
-		window.location.href = `https://www.google.com/maps/dir/${coods.join('/')}`;
+		const currPos = this.props.currentGeoPosition ? this.props.currentGeoPosition.toString() + '/' : '';
+		const resultingPos = currPos + coods.join('/');
+		window.location.href = `https://www.google.com/maps/dir/${resultingPos}`;
 	};
 
 	handleRequestSort = (event, property) => {
@@ -140,8 +138,8 @@ class EnhancedTable extends React.Component {
 
 		if (tmpArray) {
 			if (this.state.selected.indexOf(currentSelectedObj) !== -1) {
-				const idx = tmpArray.indexOf(currentSelectedObj)
-                tmpArray.splice(idx, 1);
+				const idx = tmpArray.indexOf(currentSelectedObj);
+				tmpArray.splice(idx, 1);
 			} else {
 				tmpArray = [ ...this.state.selected, currentSelectedObj ];
 			}
