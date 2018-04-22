@@ -71,15 +71,6 @@ class EnhancedTable extends React.Component {
 										<TableCell padding="none">{n.name}</TableCell>
 										<TableCell numeric>{n.area}</TableCell>
 										<TableCell>{n.community}</TableCell>
-										{/* <TableCell>
-											{n.coods ? (
-												<a target="_blank" href={`https://maps.google.com/?q=${n.coods}`}>
-													zeigen
-												</a>
-											) : (
-													<div>-</div>
-												)}
-										</TableCell> */}
 										<TableCell numeric> {n.distance || '-'}</TableCell>
 									</TableRow>
 								);
@@ -91,7 +82,7 @@ class EnhancedTable extends React.Component {
 		);
 	}
 
-	refreshStateData = (input) => {
+	refreshStateData = input => {
 		const distances = this.addDistance(input)
 
 		this.setState({
@@ -144,6 +135,7 @@ class EnhancedTable extends React.Component {
 			data = order === 'desc' ? this.props.data.sort((a, b) => a.area - b.area) : this.props.data.reverse();
 			data =  this.addDistance(data)
 		} else {
+			// distance
 			data = order === 'desc' ? this.state.data.sort((a, b) => a.distance - b.distance) : this.state.data.reverse();
 		}
 
