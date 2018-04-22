@@ -14,9 +14,19 @@ export const GoogleMapComponent = compose(
 )((props) => {
   const lat = parseFloat(props.currentGeoPosition.split(',')[0]) || -34.397
   const lng = parseFloat(props.currentGeoPosition.split(',')[1]) || 150.644
+
   return (
-    <GoogleMap defaultZoom={12} defaultCenter={{ lat, lng }}>
+    <GoogleMap defaultZoom={8} defaultCenter={{ lat, lng }}>
       {props.isMarkerShown && <Marker position={{ lat, lng }} />}
+      {props.isMarkerShown && props.markerPositions.map((pos, idx) => {
+        return (
+          <Marker key={`${idx}-positions`} position={{
+            lat: parseFloat(pos.split(',')[0]),
+            lng: parseFloat(pos.split(',')[1])
+          }}
+          />
+        )
+      })}
     </GoogleMap>
   )
 })

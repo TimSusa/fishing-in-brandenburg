@@ -134,6 +134,8 @@ class EnhancedTable extends React.Component {
 
 	handleClick = (event, index) => {
 		const currentSelectedObj = this.state.data[index];
+
+
 		let tmpArray = this.state.selected;
 
 		if (tmpArray) {
@@ -145,6 +147,9 @@ class EnhancedTable extends React.Component {
 			}
 		}
 
+		this.props.onItemSelected(tmpArray.map(({coods})=> coods))
+
+		
 		this.setState({
 			selected: tmpArray
 		});

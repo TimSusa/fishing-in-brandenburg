@@ -15,7 +15,8 @@ class Index extends React.Component {
 	state = {
 		limitAreaValue: this.startVal,
 		data: getNamesAndAreas(this.startVal),
-		currentGeoPosition: ''
+		currentGeoPosition: '',
+		markerPositions: []
 	};
 	componentWillMount() {
 		// In order to save performance, we have a look, 
@@ -66,12 +67,18 @@ class Index extends React.Component {
 				<Typography variant="subheading" gutterBottom>
 					Gefundene Anzahl: {this.state.data.length}
 				</Typography>
-				{currentGeoPosition && <GoogleMapComponent isMarkerShown currentGeoPosition={currentGeoPosition} />}
-				<TableEnhaced data={this.state.data} currentGeoPosition={currentGeoPosition}/>
+				{currentGeoPosition && <GoogleMapComponent isMarkerShown currentGeoPosition={currentGeoPosition} markerPositions={this.state.markerPositions}/>}
+				<TableEnhaced data={this.state.data} currentGeoPosition={currentGeoPosition} onItemSelected={this.onItemSelected} />
 			</div>
 		);
 	}
 
+	onItemSelected = (markerPositions) => {
+		console.log('onItemSelected ', markerPositions)
+		this.setState({
+			markerPositions
+		})
+	}
 	handleChange = (e) => {
 		if (e.target.name === 'inputArea') {
 			var data = getNamesAndAreas(e.target.value);
