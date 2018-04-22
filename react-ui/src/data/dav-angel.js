@@ -13914,7 +13914,7 @@ export const davAngeln = {
       'VF 02',
       'Beeskow'
     ],
-    [ '1374', '07', 'Glower See', 'Glower See', '160', 'Marke/JAK', '', '', '79', '10', 'VF 02', 'Beeskow' ],
+    [ '1374', '07', 'Glower See', 'Glower See', '160', 'Marke/JAK', '52.0967669,14.176846', '', '79', '10', 'VF 02', 'Beeskow' ],
     [
       '1375',
       '08',

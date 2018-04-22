@@ -14,7 +14,7 @@ class EnhancedTable extends React.Component {
 
 		this.state = {
 			order: 'asc',
-			orderBy: 'area',
+			orderBy: 'distance',
 			selected: [],
 			data: []
 		};
@@ -22,7 +22,8 @@ class EnhancedTable extends React.Component {
 
 	componentWillMount() {
 		this.refreshStateData(this.props.data);
-		this.props.onItemSelected(this.props.data.map(({coods})=> coods))
+		// Initially show all markers
+		this.props.onItemSelected(this.props.data.map(({ coods }) => coods))
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -70,15 +71,16 @@ class EnhancedTable extends React.Component {
 										<TableCell padding="none">{n.name}</TableCell>
 										<TableCell numeric>{n.area}</TableCell>
 										<TableCell>{n.community}</TableCell>
-										<TableCell>
+										{/* <TableCell>
 											{n.coods ? (
 												<a target="_blank" href={`https://maps.google.com/?q=${n.coods}`}>
 													zeigen
 												</a>
 											) : (
-												<div>-</div>
-											)}
-										</TableCell>
+													<div>-</div>
+												)}
+										</TableCell> */}
+										<TableCell numeric> {n.distance}</TableCell>
 									</TableRow>
 								);
 							})}
@@ -90,8 +92,20 @@ class EnhancedTable extends React.Component {
 	}
 
 	refreshStateData = (input) => {
+		const distances = input.map((item) => {
+			const lat1 = this.props.currentGeoPosition.split(',')[0]
+			const lng1 = this.props.currentGeoPosition.split(',')[1]
+			const lat2 = item.coods.split(',')[0]
+			const lng2 = item.coods.split(',')[1]
+			const distance = parseInt(this.getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)) || 0
+
+			return {
+				...item,
+				distance
+			}
+		})
 		this.setState({
-			data: input
+			data: distances
 		});
 	};
 
@@ -112,14 +126,20 @@ class EnhancedTable extends React.Component {
 	};
 
 	handleRequestSort = (event, property) => {
-		const orderBy = 'area';
+		console.log('ti', { property }, this.props.data)
+		const orderBy = property;
 		let order = 'desc';
+		let data = null
 
 		if (this.state.orderBy === property && this.state.order === 'desc') {
 			order = 'asc';
 		}
 
-		const data = order === 'desc' ? this.props.data.sort((a, b) => a.area - b.area) : this.props.data.reverse();
+		if (property == 'area') {
+			data = order === 'desc' ? this.props.data.sort((a, b) => a.area - b.area) : this.props.data.reverse();
+		} else {
+			data = order === 'desc' ? this.state.data.sort((a, b) => a.distance - b.distance) : this.state.data.reverse();
+		}
 
 		this.setState({ data, order, orderBy });
 	};
@@ -128,7 +148,7 @@ class EnhancedTable extends React.Component {
 		event.preventDefault();
 		if (checked) {
 			this.setState({ selected: this.state.data.map((n) => n) });
-			this.props.onItemSelected(this.state.data.map(({coods})=> coods))
+			this.props.onItemSelected(this.state.data.map(({ coods }) => coods))
 			return;
 		}
 		this.setState({ selected: [] });
@@ -145,23 +165,42 @@ class EnhancedTable extends React.Component {
 				const idx = tmpArray.indexOf(currentSelectedObj);
 				tmpArray.splice(idx, 1);
 			} else {
-				tmpArray = [ ...tmpArray, currentSelectedObj ];
+				tmpArray = [...tmpArray, currentSelectedObj];
 			}
 		}
 
 		// call to the outside
-		this.props.onItemSelected(tmpArray.map(({coods})=> coods))
+		this.props.onItemSelected(tmpArray.map(({ coods }) => coods))
 
-		
+
 		this.setState({
 			selected: tmpArray
 		});
+
 	};
 
 	isSelected = (i, input) => {
 		const tmp = this.state.selected && this.state.selected.some((obj) => obj.name === input.name);
 		return tmp;
 	};
+
+	getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+		var R = 6371; // Radius of the earth in km
+		var dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+		var dLon = this.deg2rad(lon2 - lon1);
+		var a =
+			Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+			Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+			Math.sin(dLon / 2) * Math.sin(dLon / 2)
+			;
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		var d = R * c; // Distance in km
+		return d;
+	};
+
+	deg2rad = (deg) => {
+		return deg * (Math.PI / 180)
+	}
 }
 
 EnhancedTable.propTypes = {

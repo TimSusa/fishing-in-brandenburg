@@ -8,7 +8,7 @@ const columnData = [
 	{ id: 'name', numeric: false, disablePadding: true, label: 'Gewässername' },
 	{ id: 'area', numeric: true, disablePadding: false, label: 'Fläche (ha)' },
 	{ id: 'community', numeric: false, disablePadding: false, label: 'Verein' },
-	{ id: 'showOnGoogle', numeric: false, disablePadding: false, label: 'Auf Karte zeigen' }
+	{ id: 'distance', numeric: true, disablePadding: false, label: 'Distanz (Luftlinie in km)' }
 ];
 
 class EnhancedTableHead extends React.Component {
