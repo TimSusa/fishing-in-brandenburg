@@ -158,14 +158,14 @@ class EnhancedTable extends React.Component {
 
 	handleClick = (event, index) => {
 		const currentSelectedObj = this.state.data[index];
-
+		console.log('currentSelectedObj ', currentSelectedObj)
 
 		let tmpArray = this.state.selected
 
 		if (tmpArray) {
-			if (tmpArray.indexOf(currentSelectedObj) !== -1) {
-				const idx = tmpArray.indexOf(currentSelectedObj);
-				tmpArray.splice(idx, 1);
+			// Check for duplicates or enable item
+			if (tmpArray.some(item => item.name === currentSelectedObj.name)) {
+				tmpArray = tmpArray.filter(item => item.name !== currentSelectedObj.name)
 			} else {
 				tmpArray = [...tmpArray, currentSelectedObj];
 			}
