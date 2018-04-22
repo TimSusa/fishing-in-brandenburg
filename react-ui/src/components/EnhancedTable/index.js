@@ -80,7 +80,7 @@ class EnhancedTable extends React.Component {
 													<div>-</div>
 												)}
 										</TableCell> */}
-										<TableCell numeric> {n.distance}</TableCell>
+										<TableCell numeric> {n.distance || '-'}</TableCell>
 									</TableRow>
 								);
 							})}
@@ -92,18 +92,20 @@ class EnhancedTable extends React.Component {
 	}
 
 	refreshStateData = (input) => {
-		const distances = input.map((item) => {
-			const lat1 = this.props.currentGeoPosition.split(',')[0]
-			const lng1 = this.props.currentGeoPosition.split(',')[1]
-			const lat2 = item.coods.split(',')[0]
-			const lng2 = item.coods.split(',')[1]
-			const distance = parseInt(this.getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)) || 0
+		const distances = input
+			.map((item) => {
+				const lat1 = this.props.currentGeoPosition.split(',')[0]
+				const lng1 = this.props.currentGeoPosition.split(',')[1]
+				const lat2 = item.coods.split(',')[0]
+				const lng2 = item.coods.split(',')[1]
+				const distance = parseInt(this.getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)) || 0
 
-			return {
-				...item,
-				distance
-			}
-		})
+				return {
+					...item,
+					distance
+				}
+			})
+			
 		this.setState({
 			data: distances
 		});
@@ -158,7 +160,7 @@ class EnhancedTable extends React.Component {
 		const currentSelectedObj = this.state.data[index];
 
 
-		let tmpArray = this.state.selected;
+		let tmpArray = this.state.selected
 
 		if (tmpArray) {
 			if (tmpArray.indexOf(currentSelectedObj) !== -1) {
