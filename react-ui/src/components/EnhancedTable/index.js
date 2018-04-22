@@ -22,6 +22,7 @@ class EnhancedTable extends React.Component {
 
 	componentWillMount() {
 		this.refreshStateData(this.props.data);
+		this.props.onItemSelected(this.props.data.map(({coods})=> coods))
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -127,6 +128,7 @@ class EnhancedTable extends React.Component {
 		event.preventDefault();
 		if (checked) {
 			this.setState({ selected: this.state.data.map((n) => n) });
+			this.props.onItemSelected(this.state.data.map(({coods})=> coods))
 			return;
 		}
 		this.setState({ selected: [] });
@@ -147,6 +149,7 @@ class EnhancedTable extends React.Component {
 			}
 		}
 
+		// call to the outside
 		this.props.onItemSelected(tmpArray.map(({coods})=> coods))
 
 		

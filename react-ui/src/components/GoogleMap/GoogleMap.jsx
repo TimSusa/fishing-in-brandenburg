@@ -16,7 +16,7 @@ export const GoogleMapComponent = compose(
   const lng = parseFloat(props.currentGeoPosition.split(',')[1]) || 150.644
 
   return (
-    <GoogleMap defaultZoom={8} defaultCenter={{ lat, lng }}>
+    <GoogleMap defaultZoom={7} defaultCenter={{ lat, lng }}>
       {props.isMarkerShown && <Marker position={{ lat, lng }} />}
       {props.isMarkerShown && props.markerPositions.map((pos, idx) => {
         return (
