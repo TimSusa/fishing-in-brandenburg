@@ -92,24 +92,28 @@ class EnhancedTable extends React.Component {
 	}
 
 	refreshStateData = (input) => {
-		const distances = input
-			.map((item) => {
-				const lat1 = this.props.currentGeoPosition.split(',')[0]
-				const lng1 = this.props.currentGeoPosition.split(',')[1]
-				const lat2 = item.coods.split(',')[0]
-				const lng2 = item.coods.split(',')[1]
-				const distance = parseInt(this.getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)) || 0
+		const distances = this.addDistance(input)
 
-				return {
-					...item,
-					distance
-				}
-			})
-			
 		this.setState({
 			data: distances
 		});
 	};
+
+	addDistance = input => {
+		return input.map((item) => {
+			const lat1 = this.props.currentGeoPosition.split(',')[0]
+			const lng1 = this.props.currentGeoPosition.split(',')[1]
+			const lat2 = item.coods.split(',')[0]
+			const lng2 = item.coods.split(',')[1]
+			const distance = parseInt(this.getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2)) || 0
+
+			return {
+				...item,
+				distance
+			}
+		})
+	}
+
 
 	handleDeleteSelection = () => {
 		this.setState({ selected: [] });
@@ -128,7 +132,6 @@ class EnhancedTable extends React.Component {
 	};
 
 	handleRequestSort = (event, property) => {
-		console.log('ti', { property }, this.props.data)
 		const orderBy = property;
 		let order = 'desc';
 		let data = null
@@ -139,6 +142,7 @@ class EnhancedTable extends React.Component {
 
 		if (property == 'area') {
 			data = order === 'desc' ? this.props.data.sort((a, b) => a.area - b.area) : this.props.data.reverse();
+			data =  this.addDistance(data)
 		} else {
 			data = order === 'desc' ? this.state.data.sort((a, b) => a.distance - b.distance) : this.state.data.reverse();
 		}
@@ -158,7 +162,6 @@ class EnhancedTable extends React.Component {
 
 	handleClick = (event, index) => {
 		const currentSelectedObj = this.state.data[index];
-		console.log('currentSelectedObj ', currentSelectedObj)
 
 		let tmpArray = this.state.selected
 
